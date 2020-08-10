@@ -2,12 +2,12 @@
   <q-page>
     <div class="container q-pa-md">
       <div class="row">
-        <span class="text-h4">Previsão Dólar</span>
+        <span class="text-h4">Previsão Bitcoin</span>
       </div>
       <div class="row q-mb-md">
         <div class="col-12">
           <q-banner rounded class="bg-info text-white">
-            Rede Neural Artifical criada a partir de um documento CSV com dados (DATA, FECHAMENTO, ABERTURA, MÁXIMA E MÍNIMA) do Dollar ao longo de um tempo, com o intuíto de indicar a previsão do dia seguinte apartir dos dados dia informado.
+            Rede Neural Artifical criada a partir de um documento CSV com dados (DATA, FECHAMENTO, ABERTURA, MÁXIMA E MÍNIMA) do Bitcoin ao longo de um tempo, com o intuíto de indicar a previsão do dia seguinte apartir dos dados dia informado.
           </q-banner>
         </div>
       </div>
@@ -99,10 +99,10 @@ export default {
       response: '',
       arquivo: null,
       input: {
-        open: 3.8470,
-        close: 3.9500,
-        higth: 4.0000,
-        low: 3.7900
+        open: 6386.6,
+        close: 7190.3,
+        higth: 7373.8,
+        low: 6386.5
       }
     }
   },
@@ -160,8 +160,12 @@ export default {
 
         const model = this.$tf.sequential()
         const inputLayer = this.$tf.layers.dense({ units: 4, inputShape: [4] })
+
+        const learningRate = 0.000000001
+        const optimizer = this.$tf.train.sgd(learningRate)
+
         model.add(inputLayer)
-        model.compile({ loss: 'meanSquaredError', optimizer: 'sgd' })
+        model.compile({ loss: 'meanSquaredError', optimizer: optimizer })
 
         const x = this.$tf.tensor(X, [qtdLinhas, 4])
         const y = this.$tf.tensor(Y)

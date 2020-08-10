@@ -20,7 +20,9 @@ module.exports = function (/* ctx */) {
     // https://quasar.dev/quasar-cli/boot-files
     boot: [
 
-      'axios'
+      'axios',
+      'tf',
+      'fs'
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -95,11 +97,16 @@ module.exports = function (/* ctx */) {
       // (like functional components as one of the examples),
       // you can manually specify Quasar components/directives to be available everywhere:
       //
-      // components: [],
+      components: [
+        'QBanner',
+        'Dialog'
+      ],
       // directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: [
+        'Loading'
+      ]
     },
 
     // animations: 'all', // --- includes all animations
@@ -116,9 +123,9 @@ module.exports = function (/* ctx */) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'Quasar App',
-        short_name: 'Quasar App',
-        description: 'A Quasar Framework app',
+        name: 'TensorFlow Estudos',
+        short_name: 'tfestudos',
+        description: 'Estudos com tensorflow.js',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',

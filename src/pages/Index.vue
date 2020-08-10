@@ -3,6 +3,7 @@
     <img
       alt="Tensor Logo"
       src="~assets/tensor.png"
+      width="500"
     >
   </q-page>
 </template>
